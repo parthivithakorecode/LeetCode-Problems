@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int maxIceCream(vector<int>& costs, int coins) {
+        //We need to count the number of icecreams as well as calculate the cost for them
+        int sum = 0;
+        int count=0;
+        sort(costs.begin(),costs.end()); //so that maximum number of icecreams can be purchased
+        for(int i=0; i<costs.size(); i++)
+        {
+            sum+=costs[i];
+            count++;
+            if(sum==coins)return count;
+            if(sum>coins)return count-1; //as soon as the "sum" will become greater than coins we will not count the last coins(that made the sum exceed, hence (count-1) is returned)
+        }
+        return count;
+    }
+};
