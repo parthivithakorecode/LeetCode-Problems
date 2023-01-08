@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int maxPoints(vector<vector<int>>& points) {
+        // thinking if I can use...
+        // y = mx + c where m is the slope
+        // slope = (y1-y0)/(x1-x0) 
+        int N=points.size();
+        if(N<=2) return N;
+        int MAX=2; //For 1st Step
+        //to find all the pairs of points that are forming a line
+        for(int i=0; i<N; i++){
+            for(int j=i+1; j<N; j++){
+                int ALL=2; //For 2nd Step
+                //Now, to find if there is any other point(s) whoes lines are coinciding
+                for(int k=0; k<N; k++){
+                    //other than those we have found already
+                    if(k!=i && k!=j){ 
+                        //its like (y1-y0)(x2-x1) = (y2-y1)(x1-x0)
+                        if((points[j][1]-points[i][1])*(points[i][0]-points[k][0]) == (points[i][1]-points[k][1])*(points[j][0]-points[i][0])) ALL++;
+                    }
+                }
+                //taking the maximum from both the steps
+                MAX = max(MAX,ALL);
+            }
+        }
+        return MAX;
+    }
+};
