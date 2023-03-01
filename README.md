@@ -1,2 +1,2 @@
-# LeetCode-Streak-2023
+# LeetCode-Problems
 My way of solving problems (2023) with #DSA
